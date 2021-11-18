@@ -40,7 +40,7 @@ def whatever():
         if len(dataBuffer) > 0 :
             readData = dataBuffer.popleft();
             print('Processing... data -> ',readData)
-        else   
+        else :
             trig = False;
 
         for keyread in readData.keys():
