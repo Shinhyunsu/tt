@@ -24,6 +24,7 @@ def welcome():
 @app.route('/webhook',methods=['POST'])
 def whatever():
     global coinName
+    global dataBuffer
     nowTime = datetime.now()
    
     dataBuffer.append(json.loads(request.data))
@@ -38,7 +39,7 @@ def whatever():
     if trig == True:
         if len(dataBuffer) > 0 :
             readData = dataBuffer.popleft();
-            print('Processing... data -> 'readData)
+            print('Processing... data -> ',readData)
         else   
             trig = False;
 
