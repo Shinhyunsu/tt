@@ -28,7 +28,7 @@ def whatever():
    
     dataBuffer.append(json.loads(request.data))
     
-    if nowTime.hour === 12 and  nowTime.minuate >= 40 and nowTime.minuate <= 50 :
+    if nowTime.hour == 12 and  nowTime.minuate >= 40 and nowTime.minuate <= 50 :
         trig = True;
     else:
         chkkk = False;
