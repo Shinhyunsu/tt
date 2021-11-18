@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 dataBuffer = []
 coinName =[]
-
+readData = ""
 
 #rint('hour',nowTime.hour)
 
@@ -25,6 +25,7 @@ def welcome():
 def whatever():
     global coinName
     global dataBuffer
+    global readData
     nowTime = datetime.now()
    
     dataBuffer.append(json.loads(request.data))
