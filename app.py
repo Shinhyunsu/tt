@@ -29,10 +29,9 @@ def whatever():
     nowTime = datetime.now()
    
     dataBuffer.append(json.loads(request.data))
-    #print(dataBuffer)
-    
+
     if nowTime.hour == 9 and  nowTime.minute >= 5 and nowTime.minute <= 15:
-        print('ok')
+        #print('ok')
         trig = True;
         
     else:
