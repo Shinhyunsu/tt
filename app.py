@@ -54,7 +54,7 @@ def whatever():
         if chkkk == True:
             chkkk = False;
             totalString = '🔔 코인 : ' + readData['moving_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
-            print('MA send : ',totalString)
+            print("MA send : ",totalString)
 
             bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
             chat_id = '-1001678871735'
