@@ -35,7 +35,7 @@ def whatever():
         chkkkk = False;
         trig = False;
 
-    if trig = True:
+    if trig == True:
         if len(dataBuffer) > 0 :
             readData = dataBuffer.popleft();
             print('Processing... data -> 'readData)
