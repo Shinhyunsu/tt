@@ -29,17 +29,23 @@ def whatever():
     nowTime = datetime.now()
    
     dataBuffer.append(json.loads(request.data))
+    #print(dataBuffer)
     
-    if nowTime.hour == 12 and  nowTime.minuate >= 50 and nowTime.minuate <= 59 :
+    if nowTime.hour == 14 and  nowTime.minute >= 10 and nowTime.minute <= 40:
+        print('ok')
         trig = True;
+        
     else:
         chkkk = False;
         chkkkk = False;
         trig = False;
 
     if trig == True:
-        if len(dataBuffer) > 0 :
+        if len(dataBuffer) > 1:
             readData = dataBuffer.popleft();
+            print('Processing... data -> ',readData)
+        elif  len(dataBuffer) == 1:
+            readData = dataBuffer.pop();
             print('Processing... data -> ',readData)
         else :
             trig = False;
