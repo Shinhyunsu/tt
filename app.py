@@ -29,7 +29,7 @@ def whatever():
    
     dataBuffer.append(json.loads(request.data))
 
-    if nowTime.hour == 10 and  nowTime.minute >= 20 and nowTime.minute <= 55:
+    if nowTime.hour == 11 and  nowTime.minute >= 20 and nowTime.minute <= 55:
         #print('ok')
         trig = True;
         
