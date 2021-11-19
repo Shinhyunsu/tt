@@ -26,11 +26,11 @@ def whatever():
     global dataBuffer
     global readData
     nowTime = datetime.now()
-   
+    print('o11k', dataBuffer, nowTime.hour, nowTime.minute)
     dataBuffer.append(json.loads(request.data))
 
     if nowTime.hour == 11 and  nowTime.minute >= 20 and nowTime.minute <= 55:
-        #print('ok')
+        print('ok', dataBuffer, nowTime)
         trig = True;
         
     else:
