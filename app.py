@@ -14,7 +14,6 @@ dataBuffer = []
 coinName =[]
 readData = ""
 
-#rint('hour',nowTime.hour)
 
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
@@ -30,7 +29,7 @@ def whatever():
    
     dataBuffer.append(json.loads(request.data))
 
-    if nowTime.hour == 9 and  nowTime.minute >= 5 and nowTime.minute <= 15:
+    if nowTime.hour == 10 and  nowTime.minute >= 20 and nowTime.minute <= 55:
         #print('ok')
         trig = True;
         
