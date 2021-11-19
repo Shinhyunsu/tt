@@ -28,8 +28,8 @@ def whatever():
     nowTime = datetime.now()
     
     dataBuffer.append(json.loads(request.data))
-    print('pint',nowTime.hour,nowTime.min)
-    if nowTime.hour == 2 and  nowTime.minute >= 20 and nowTime.minute <= 55:
+    print('pint',nowTime.hour,nowTime.minute)
+    if nowTime.hour == 23 and  nowTime.minute >= 20 and nowTime.minute <= 55:
         
         trig = True;
         
