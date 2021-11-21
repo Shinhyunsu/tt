@@ -15,6 +15,9 @@ coinName =[]
 readData = ""
 
 
+def job():
+    print("자연, 우리의 미래...")
+
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
     
@@ -22,15 +25,22 @@ def welcome():
 
 @app.route('/webhook',methods=['POST'])
 def whatever():
+    schedule.every().hour.at(":15").do(job)
+
     global coinName
     global dataBuffer
     global readData
     nowTime = datetime.now()
     
-    dataBuffer.append(json.loads(request.data))
-    print('pint',nowTime.hour,nowTime.minute)
+    dataBuffer.append()
+    #print('pint',nowTime.hour,nowTime.minute)
+    databackup = json.loads(request.data)
+    for keyread in databackup.keys():
+        if keyread == 'trigger_exchange':
+            trigger = True;
+            break;
+
     if nowTime.hour == 0 and  nowTime.minute >= 10 and nowTime.minute <= 20:
-        
         trig = True;
         
     else:
@@ -55,6 +65,10 @@ def whatever():
             if keyread == 'maxVolume':
                 chkkk = False
                 chkkkk = True
+            if keyread == 'trigger_exchange'
+                if trigger == True
+
+
     
         if chkkk == True:
             chkkk = False;
