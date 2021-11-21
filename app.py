@@ -35,12 +35,17 @@ def whatever():
     global readData
     nowTime = datetime.now()
     
+    
+    
+    
+    reqdata = json.loads(request.data)
+    print('pint',nowTime.hour,nowTime.minute, reqdata)
+    dataBuffer.append(reqdata)
+    
+
+
     schedule.every(2).minutes.do(job)
     schedule.run_pending()
-    
-    print('pint',nowTime.hour,nowTime.minute)
-    dataBuffer.append(json.loads(request.data))
-    
 
     if nowTime.hour == 0 and  nowTime.minute >= 10 and nowTime.minute <= 20:
         trig = True;
