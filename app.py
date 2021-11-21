@@ -19,7 +19,7 @@ readData = ""
 
 def job():
     print("자연, 우리의 미래...")
-schedule.every().hour.at(":15").do(job)
+
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
     
@@ -27,7 +27,7 @@ def welcome():
 
 @app.route('/webhook',methods=['POST'])
 def whatever():
-    
+    schedule.every().hour.at(":15").do(job)
 
     global coinName
     global dataBuffer
