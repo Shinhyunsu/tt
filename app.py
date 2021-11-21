@@ -7,7 +7,7 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 from datetime import datetime
-from flask_apscheduler import APscheduler
+from flask_apscheduler import APScheduler
 
 
 
