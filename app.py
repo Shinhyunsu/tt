@@ -129,6 +129,6 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port)
 
 
-schedule.every(10).seconds.do(run_every_10_seconds)
+schedule.every(60).seconds.do(run_every_10_seconds)
 t = Thread(target=run_schedule)
 t.start()

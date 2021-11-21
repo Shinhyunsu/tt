@@ -3,4 +3,5 @@ gunicorn
 python-telegram-bot
 flask_cors
 datetime
-Flask-APScheduler
+schedule
+Thread
