@@ -77,4 +77,5 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port)
 
 
-schedule.every().hour.at(":20").do(run_every)
+#schedule.every().hour.at(":20").do(run_every)
+schedule.every(3).minutes.do(job)
