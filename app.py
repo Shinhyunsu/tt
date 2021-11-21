@@ -7,6 +7,7 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 import schedule
+import threading
 
 app = Flask(__name__)
 
@@ -15,8 +16,9 @@ dataBuffer = []
 coinName =[]
 readData = ""
 
-def run_every():
-    print('asdg')
+
+def schedule_job():
+    print('1111')
     while len(dataBuffer) != 0:
         if len(dataBuffer) > 1:
             readData = dataBuffer.popleft();
@@ -78,5 +80,25 @@ if __name__ == "__main__":
 
 
 #schedule.every().hour.at(":20").do(run_every)
+
 schedule.every(3).minutes.do(run_every)
-schedule.start();
+
+
+def schedule_alarm():
+    #schedule.every().day.at("17:00").do(schedule_job)
+    schedule.every(3).minutes.do(schedule_job)
+    while True:
+        schedule.run_pending() # pending된 Job을 실행
+        time.sleep(1)
+ 
+
+    
+
+alarm_thread = threading.Thread(target=schedule_alarm)
+alarm_thread.start()
+ 
+
+
+
+
+
