@@ -7,13 +7,28 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 from datetime import datetime
-from flask_apscheduler import APScheduler
+#from flask_apscheduler import APScheduler
+#from apscheduler.schedulers.blocking import BlockingScheduler
+import schedule
+from threading import Thread
 
+start_time = time.time()
 
+def run_every_10_seconds():
+    print("Running periodic task!")
+    print ("Elapsed time: " + str(time.time() - start_time))
+
+def run_schedule():
+    
+    while 1:
+        
+        schedule.run_pending()
+        time.sleep(1)   
 
 
 app = Flask(__name__)
-scheduler = APScheduler()
+#scheduler = APScheduler()
+#scheduler = BlockingScheduler()
 
 CORS(app)
 dataBuffer = []
@@ -102,10 +117,18 @@ def whatever():
 
 if __name__ == "__main__":
     #scheduler.add_job(id="scheduler task", func = job, trigger='interval', minute =2)
-    scheduler.add_job(job, 'cron', second='*/60', id="test_1")
-    scheduler.start()
+    # scheduler.add_job(job, 'cron', second='*/60', id="test_1")
+    #scheduler.add_job(func=job, trigger='cron', second='*/60')
+    #scheduler.start()
+
+    
+
+
     print("main play")
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
 
+schedule.every(10).seconds.do(run_every_10_seconds)
+t = Thread(target=run_schedule)
+t.start()
