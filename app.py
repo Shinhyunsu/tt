@@ -7,9 +7,10 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 from datetime import datetime
-from apscheduler.schedulers.background import BackgroundScheduler
+import schedule
 
-sched = BackgroundScheduler(daemon=True)
+schedule.run_pending()
+
 
 app = Flask(__name__)
 CORS(app)
@@ -17,13 +18,11 @@ dataBuffer = []
 coinName =[]
 readData = ""
 
-
-
 def job():
-    print("자연, 우리의 미래...")
+    print('time ok')
 
-sched.add_job(job(),'cron', week='1-53', day_of_week='0-6', hour='0') #apscheduler실행 sched.start()
-sched.start()
+schedule.every(2).minutes.do(job)
+schedule.run_pending()
 
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():

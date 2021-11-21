@@ -3,4 +3,4 @@ gunicorn
 python-telegram-bot
 flask_cors
 datetime
-BackgroundScheduler==3.8.1
+schedule
