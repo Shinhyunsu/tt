@@ -15,11 +15,11 @@ dataBuffer = []
 coinName =[]
 readData = ""
 
-schedule.every().hour.at(":15").do(job)
+
 
 def job():
     print("자연, 우리의 미래...")
-
+schedule.every().hour.at(":15").do(job)
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
     
