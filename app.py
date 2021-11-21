@@ -13,7 +13,7 @@ from flask_apscheduler import APScheduler
 
 
 app = Flask(__name__)
-scheduler = APscheduler()
+scheduler = APScheduler()
 
 CORS(app)
 dataBuffer = []
