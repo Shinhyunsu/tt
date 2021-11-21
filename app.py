@@ -32,13 +32,13 @@ def whatever():
     global readData
     nowTime = datetime.now()
     
-    dataBuffer.append()
+    
     #print('pint',nowTime.hour,nowTime.minute)
-    databackup = json.loads(request.data)
-    for keyread in databackup.keys():
-        if keyread == 'trigger_exchange':
-            trigger = True;
-            break;
+    dataBuffer.append(json.loads(request.data))
+    #for keyread in databackup.keys():
+    #    if keyread == 'trigger_exchange':
+    #        trigger = True;
+    #        break;
 
     if nowTime.hour == 0 and  nowTime.minute >= 10 and nowTime.minute <= 20:
         trig = True;
