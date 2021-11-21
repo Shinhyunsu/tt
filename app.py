@@ -15,6 +15,7 @@ dataBuffer = []
 coinName =[]
 readData = ""
 
+schedule.every().hour.at(":15").do(job)
 
 def job():
     print("자연, 우리의 미래...")
@@ -26,7 +27,7 @@ def welcome():
 
 @app.route('/webhook',methods=['POST'])
 def whatever():
-    schedule.every().hour.at(":15").do(job)
+    
 
     global coinName
     global dataBuffer
