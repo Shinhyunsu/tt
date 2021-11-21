@@ -23,6 +23,7 @@ def job():
 
 
 
+
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
     
@@ -42,10 +43,6 @@ def whatever():
     print('pint',nowTime.hour,nowTime.minute, reqdata)
     dataBuffer.append(reqdata)
     
-
-
-    schedule.every(2).minutes.do(job)
-    schedule.run_pending()
 
     if nowTime.hour == 0 and  nowTime.minute >= 10 and nowTime.minute <= 20:
         trig = True;
@@ -100,7 +97,11 @@ def whatever():
         "message": readData
     }
 
+schedule.every(2).minutes.do(whatever)
+schedule.run_pending()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+
