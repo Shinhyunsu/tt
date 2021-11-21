@@ -65,8 +65,8 @@ def whatever():
             if keyread == 'maxVolume':
                 chkkk = False
                 chkkkk = True
-            if keyread == 'trigger_exchange':
-                if trigger == True
+            #if keyread == 'trigger_exchange':
+                #if trigger == True
 
 
     
