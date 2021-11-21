@@ -7,12 +7,14 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 from datetime import datetime
-import schedule
+from flask_apscheduler import APscheduler
 
-schedule.run_pending()
+
 
 
 app = Flask(__name__)
+scheduler = APscheduler()
+
 CORS(app)
 dataBuffer = []
 coinName =[]
@@ -97,10 +99,9 @@ def whatever():
         "message": readData
     }
 
-schedule.every(2).minutes.do(job)
-schedule.run_pending()
 
 if __name__ == "__main__":
+    scheduler.add_job(id="scheduler task", func = job, trigger='interval', minute =2)
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
