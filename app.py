@@ -102,6 +102,7 @@ def whatever():
 
 if __name__ == "__main__":
     scheduler.add_job(id="scheduler task", func = job, trigger='interval', minute =2)
+    scheduler.start()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
