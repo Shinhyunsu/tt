@@ -21,8 +21,7 @@ readData = ""
 def job():
     print('time ok')
 
-schedule.every(2).minutes.do(job)
-schedule.run_pending()
+
 
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
@@ -36,6 +35,8 @@ def whatever():
     global readData
     nowTime = datetime.now()
     
+    schedule.every(2).minutes.do(job)
+    schedule.run_pending()
     
     print('pint',nowTime.hour,nowTime.minute)
     dataBuffer.append(json.loads(request.data))
