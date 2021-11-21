@@ -7,7 +7,9 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import time
 from datetime import datetime
-import schedule
+from apscheduler.schedulers.background import BackgroundScheduler
+
+sched = BackgroundScheduler(daemon=True)
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +22,9 @@ readData = ""
 def job():
     print("자연, 우리의 미래...")
 
+sched.add_job(job(),'cron', week='1-53', day_of_week='0-6', hour='0') #apscheduler실행 sched.start()
+sched.start()
+
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
     
@@ -27,15 +32,13 @@ def welcome():
 
 @app.route('/webhook',methods=['POST'])
 def whatever():
-    schedule.every().hour.at(":15").do(job)
-
     global coinName
     global dataBuffer
     global readData
     nowTime = datetime.now()
     
     
-    #print('pint',nowTime.hour,nowTime.minute)
+    print('pint',nowTime.hour,nowTime.minute)
     dataBuffer.append(json.loads(request.data))
     #for keyread in databackup.keys():
     #    if keyread == 'trigger_exchange':
