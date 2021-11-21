@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
 #schedule.every().hour.at(":20").do(run_every)
 
-schedule.every(3).minutes.do(run_every)
+#schedule.every(3).minutes.do(run_every)
 
 
 def schedule_alarm():
