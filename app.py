@@ -18,7 +18,7 @@ readData = ""
 
 
 def schedule_job():
-    print('1111')
+    print('222')
     while len(dataBuffer) != 0:
         if len(dataBuffer) > 1:
             readData = dataBuffer.popleft();
@@ -86,7 +86,8 @@ if __name__ == "__main__":
 
 def schedule_alarm():
     #schedule.every().day.at("17:00").do(schedule_job)
-    schedule.every(3).minutes.do(schedule_job)
+    #schedule.every(15).minutes.do(schedule_job)
+    schedule.every().hour.at(":10").do(schedule_job)
     while True:
         schedule.run_pending() # pending된 Job을 실행
         time.sleep(1)
