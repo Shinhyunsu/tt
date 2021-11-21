@@ -97,7 +97,7 @@ def whatever():
         "message": readData
     }
 
-schedule.every(2).minutes.do(whatever)
+schedule.every(2).minutes.do(job)
 schedule.run_pending()
 
 if __name__ == "__main__":
