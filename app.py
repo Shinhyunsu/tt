@@ -18,12 +18,9 @@ readData = ""
 
 
 def schedule_job():
-    print('222')
+    print('okkkk')
     while len(dataBuffer) != 0:
-        if len(dataBuffer) > 1:
-            readData = dataBuffer.popleft();
-            print('Processing... data -> ',readData)
-        elif  len(dataBuffer) == 1:
+        if len(dataBuffer) >= 1:
             readData = dataBuffer.pop();
             print('Processing... data -> ',readData)
         
@@ -40,18 +37,18 @@ def schedule_job():
             totalString = '🔔 코인 : ' + readData['moving_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
             print("MA send : ",totalString)
 
-            bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
-            chat_id = '-1001678871735'
-            bot.sendMessage(chat_id=chat_id, text=(totalString))
+            #bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
+            #chat_id = '-1001678871735'
+            #bot.sendMessage(chat_id=chat_id, text=(totalString))
 
         elif chkkkk == True:
             chkkkk = False;
             totalString = '📈 거래량 Up 코인 : ' + readData['maxVolume_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
             print('volume send : ',totalString)
 
-            bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
-            chat_id = '-1001678871735'
-            bot.sendMessage(chat_id=chat_id, text=(totalString))
+            #bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
+            #chat_id = '-1001678871735'
+            #bot.sendMessage(chat_id=chat_id, text=(totalString))
 
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
@@ -67,7 +64,7 @@ def whatever():
     
     reqdata = json.loads(request.data)
     dataBuffer.append(reqdata)
-    
+    print('Read Data', reqdata)
     return {
         "code": "succss",
         "message": readData
@@ -87,8 +84,8 @@ if __name__ == "__main__":
 def schedule_alarm():
     #schedule.every().day.at("17:00").do(schedule_job)
     #schedule.every(15).minutes.do(schedule_job)
-    #schedule.every().hour.at(":10").do(schedule_job)
-    schedule.every(7).minutes.do(schedule_job)
+    schedule.every().hour.at(":10").do(schedule_job)
+    #schedule.every(8).minutes.do(schedule_job)
     while True:
         schedule.run_pending() # pending된 Job을 실행
         time.sleep(1)
