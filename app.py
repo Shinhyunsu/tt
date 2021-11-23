@@ -37,18 +37,18 @@ def schedule_job():
             totalString = '🔔 코인 : ' + readData['moving_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
             print("MA send : ",totalString)
 
-            #bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
-            #chat_id = '-1001678871735'
-            #bot.sendMessage(chat_id=chat_id, text=(totalString))
+            bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
+            chat_id = '-1001678871735'
+            bot.sendMessage(chat_id=chat_id, text=(totalString))
 
         elif chkkkk == True:
             chkkkk = False;
             totalString = '📈 거래량 Up 코인 : ' + readData['maxVolume_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
             print('volume send : ',totalString)
 
-            #bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
-            #chat_id = '-1001678871735'
-            #bot.sendMessage(chat_id=chat_id, text=(totalString))
+            bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
+            chat_id = '-1001678871735'
+            bot.sendMessage(chat_id=chat_id, text=(totalString))
 
 @app.route('/',methods=['GET', 'OPTIONS'])
 def welcome():
