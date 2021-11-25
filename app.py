@@ -13,7 +13,6 @@ app = Flask(__name__)
 
 CORS(app)
 dataBuffer = []
-coinName =[]
 readData = ""
 
 
@@ -51,20 +50,28 @@ def schedule_job():
             bot.sendMessage(chat_id=chat_id, text=(totalString))
 
 @app.route('/',methods=['GET', 'OPTIONS'])
+
 def welcome():
-    
     return render_template('index.html')
 
 @app.route('/webhook',methods=['POST'])
 def whatever():
-    global coinName
-    global dataBuffer
-    global readData
+    #global dataBuffer
+    #global readData
     
     
-    reqdata = json.loads(request.data)
-    dataBuffer.append(reqdata)
-    print('Read Data', reqdata)
+    readData = json.loads(request.data)
+    #reqdata = json.loads(request.data)
+    #dataBuffer.append(reqdata)
+    
+    totalString = '🔔 코인 : ' + readData['moving_exchange'] + ' 거래량 : ' + str(readData['volume']) + ' 금액 : ' + str(readData['price']) + ' 시간 : ' + str(readData['time'])
+    
+
+    bot = telegram.Bot(token='2105654811:AAEpHpQLLeE-e2qQ6s-kJ7MDeQV54iZJbo8')
+    chat_id = '-1001678871735'
+    bot.sendMessage(chat_id=chat_id, text=(totalString))
+    print("Send : ",totalString)
+
     return {
         "code": "succss",
         "message": readData
@@ -76,25 +83,17 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port)
 
 
-#schedule.every().hour.at(":20").do(run_every)
-
-#schedule.every(3).minutes.do(run_every)
-
-
+"""
 def schedule_alarm():
-    #schedule.every().day.at("17:00").do(schedule_job)
-    #schedule.every(15).minutes.do(schedule_job)
     schedule.every().hour.at(":10").do(schedule_job)
-    #schedule.every(8).minutes.do(schedule_job)
     while True:
         schedule.run_pending() # pending된 Job을 실행
         time.sleep(1)
  
 
-    
-
 alarm_thread = threading.Thread(target=schedule_alarm)
 alarm_thread.start()
+"""
  
 
 
